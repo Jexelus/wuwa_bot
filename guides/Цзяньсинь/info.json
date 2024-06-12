@@ -1,0 +1,27 @@
+{
+  "constellation_name": "Цзяньсинь",
+  "constellation_rarity": "5",
+  "constellation_element": "Аэро",
+  "constellation_weapon_type": "Перчатки (Gauntlets)",
+  "constellation_role": "Персонаж поддержки",
+  "constellation_rising_materials": {
+    "1": "2 200 000 кредитов",
+    "2": "4 LF Ядро ревуна",
+    "3": "12 MF Ядро ревуна",
+    "4": "12 HF Ядро ревуна",
+    "5": "4 FF Ядро ревуна",
+    "6": "46 Ревущий Каменный кулак (Roaring Rock Fist)",
+    "7": "60 Ягода-фонарь (Lanternberry)"
+  },
+  "constellation_rising_talent_materials": {
+    "1": "25 LF Ядро ревуна",
+    "2": "28 MF Ядро ревуна",
+    "3": "40 HF Ядро ревуна",
+    "4": "57 FF Ядро ревуна",
+    "5": "25 Семя каденции",
+    "6": "28 Бутон каденции",
+    "7": "55 Лист каденции",
+    "8": "67 Соцветие каденции",
+    "9": "26 Бесконечное разрушение (Unending Destruction)"
+  }
+}

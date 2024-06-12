@@ -1,0 +1,27 @@
+{
+  "constellation_name": "Энкор",
+  "constellation_rarity": "5",
+  "constellation_element": "Фьюжн",
+  "constellation_weapon_type": "Выпрямитель (Rectifier)",
+  "constellation_role": "Основной дамагер",
+  "constellation_rising_materials": {
+    "1": "2 200 000 кредитов",
+    "2": "4 LF Шепчущее Ядро",
+    "3": "12 MF Шепчущее Ядро",
+    "4": "12 HF Шепчущее Ядро",
+    "5": "4 FF Шепчущее Ядро",
+    "6": "46 Ядро ярости (Rage Tacet Core)",
+    "7": "60 Павлиний цветок (Pecok Flower)"
+  },
+  "constellation_rising_talent_materials": {
+    "1": "25 LF Шепчущее Ядро",
+    "2": "28 MF Шепчущее Ядро",
+    "3": "40 HF Шепчущее Ядро",
+    "4": "57 FF Шепчущее Ядро",
+    "5": "25 Спираль Ленто",
+    "6": "28 Спираль Адажио",
+    "7": "55 Спираль Анданте",
+    "8": "67 Спираль Престо",
+    "9": "26 Бесконечное разрушение (Unending Destruction)"
+  }
+}

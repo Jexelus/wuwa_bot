@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    .form-group {
+        margin-bottom: 15px; /* Примерное значение отступа */
+    }
+</style>
+<body>
+<div class="container" style="height: 100vh; display: flex; justify-content: center; align-items: center; width: 900px">
+    <div class="card" style="width: 600px">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Новый персонаж</h5>
+            <div class="form-group">
+                <label for="constellation_name">constellation_name</label>
+                <input type="text" class="form-control" id="constellation_name">
+            </div>
+            <div class="form-group">
+                <label for="constellation_rarity">constellation_rarity</label>
+                <input type="text" class="form-control" id="constellation_rarity">
+            </div>
+            <div class="form-group">
+                <label for="constellation_element">constellation_element</label>
+                <input type="text" class="form-control" id="constellation_element">
+            </div>
+            <div class="form-group">
+                <label for="constellation_role">constellation_role</label>
+                <input type="text" class="form-control" id="constellation_role">
+            </div>
+            <div class="form-group">
+                <label for="constellation_rising_materials">constellation_weapon_type</label>
+                <input type="text" class="form-control" id="constellation_weapon_type">
+            </div>
+            <div class="form-group">
+                <label for="constellation_rising_materials">constellation_rising_materials</label>
+                <input type="text" class="form-control" id="constellation_rising_materials">
+            </div>
+            <div class="form-group">
+                <label for="constellation_rising_talent_materials">constellation_rising_talent_materials</label>
+                <input type="text" class="form-control" id="constellation_rising_talent_materials">
+            </div>
+            <div class="form-group">
+                <label for="constellation_artifact_image">constellation_artifact_image</label>
+                <input type="file" class="form-control-file" id="constellation_artifact_image">
+            </div>
+            <div class="form-group">
+                <label for="constellation_talents_image">constellation_talents_image</label>
+                <input type="file" class="form-control-file" id="constellation_talents_image">
+            </div>
+            <div class="form-group">
+                <label for="constellation_image">constellation_image</label>
+                <input type="file" class="form-control-file" id="constellation_image">
+            </div>
+            <div class="form-group">
+                <label for="constellation_weapon_image">constellation_weapon_image</label>
+                <input type="file" class="form-control-file" id="constellation_weapon_image">
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="NewCharacter()">Создать</button>
+            <script>
+                var constellation_image_input = document.getElementById("constellation_image")
+                var constellation_artifact_image_input = document.getElementById("constellation_artifact_image")
+                var constellation_talents_image_input = document.getElementById("constellation_talents_image")
+                var constellation_weapon_image_input = document.getElementById("constellation_weapon_image")
+                var constellation_image = null
+                var constellation_artifact_image = null
+                var constellation_talents_image = null
+                var constellation_weapon_image = null
+
+                constellation_image_input.addEventListener('change', (e) => {
+                    return getBase64(e.target.files[0]).then((data) => {
+                        constellation_image = data
+                        console.log(data)
+                    })
+                })
+
+                constellation_artifact_image_input.addEventListener('change', (e) => {
+                    return getBase64(e.target.files[0]).then((data) => {
+                        constellation_artifact_image = data
+                        console.log(data)
+                    })
+                })
+
+                constellation_talents_image_input.addEventListener('change', (e) => {
+                    return getBase64(e.target.files[0]).then((data) => {
+                        constellation_talents_image = data
+                        console.log(data)
+                    })
+                })
+
+                constellation_weapon_image_input.addEventListener('change', (e) => {
+                    return getBase64(e.target.files[0]).then((data) => {
+                        constellation_weapon_image = data
+                        console.log(data)
+                    })
+                })
+
+                function getBase64(file) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = error => reject(error);
+                    });
+                }
+
+
+                function NewCharacter() {
+                    const constellation_name = document.getElementById("constellation_name").value
+                    const constellation_rarity = document.getElementById("constellation_rarity").value
+                    const constellation_element = document.getElementById("constellation_element").value
+                    const constellation_role = document.getElementById("constellation_role").value
+                    const constellation_rising_materials = document.getElementById("constellation_rising_materials").value
+                    const constellation_rising_talent_materials = document.getElementById("constellation_rising_talent_materials").value
+                    const constellation_weapon_type = document.getElementById("constellation_weapon_type").value
+
+
+
+                    var data = {
+                        "constellation_name": constellation_name,
+                        "constellation_rarity": constellation_rarity,
+                        "constellation_element": constellation_element,
+                        "constellation_role": constellation_role,
+                        "constellation_rising_materials": constellation_rising_materials,
+                        "constellation_rising_talent_materials": constellation_rising_talent_materials,
+                        "constellation_artifact_image": constellation_artifact_image,
+                        "constellation_image": constellation_image,
+                        "constellation_talents_image": constellation_talents_image,
+                        "constellation_weapon_type": constellation_weapon_type,
+                        "constellation_weapon_image": constellation_weapon_image
+                    }
+                    console.log(data)
+                    fetch("http://192.168.1.47:8050/create", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    }).then(response => response.json()).then(data => {
+                        console.log(data)
+                    })
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
