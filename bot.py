@@ -24,7 +24,7 @@ from keyboa import Keyboa
 server = Server(8050)
 server.start()
 
-bot = telebot.TeleBot("7027467333:AAEQu3fdZIAvY_5fiC52KtGEN5QkoO14ax8")
+bot = telebot.TeleBot("")
 
 
 @bot.message_handler(commands=['start', 'help', 'menu'])
